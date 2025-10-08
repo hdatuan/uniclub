@@ -9,4 +9,5 @@ spring:
     hibernate:
       ddl-auto: none
 
-
+secret-key:
+  jwt: OVsGlq1Ws7mgqImxilMf9AwAw0NwU6vnWtQv7bbuLqs=
