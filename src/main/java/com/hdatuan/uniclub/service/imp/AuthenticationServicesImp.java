@@ -4,6 +4,7 @@ import com.hdatuan.uniclub.entity.Users;
 import com.hdatuan.uniclub.repository.UserRepository;
 import com.hdatuan.uniclub.request.SignInRequest;
 import com.hdatuan.uniclub.service.AuthenticationServices;
+import com.hdatuan.uniclub.utils.JWTHelper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -27,6 +28,10 @@ public class AuthenticationServicesImp implements AuthenticationServices {
     @Value("${secret-key.jwt}")
     private String secretKey;
 
+    @Autowired
+    private JWTHelper jwtHelper;
+
+
     @Override
     public String checkLogin(SignInRequest signInRequest){
         String token = "";
@@ -34,9 +39,8 @@ public class AuthenticationServicesImp implements AuthenticationServices {
         if(optionalUsers.isPresent()){
             Users user = optionalUsers.get();
             if ( passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())){
-                // Neu dung thi tra ra token
-                SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
-                token = Jwts.builder().subject("Hello").signWith(key).compact();
+                // Nếu password trùng khớp ( đúng ) thì trả ra token
+                token = jwtHelper.generateToken("ROLE_ADMIN"); // Phải có prefix "ROLE_"
             }
         }
 
