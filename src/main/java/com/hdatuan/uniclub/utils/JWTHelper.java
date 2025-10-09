@@ -12,7 +12,7 @@ import javax.crypto.SecretKey;
 @Component
 public class JWTHelper {
 
-    @Value("${secret-key.jwt")
+    @Value("${secret-key.jwt}")
     private String secretKey;
 
 
