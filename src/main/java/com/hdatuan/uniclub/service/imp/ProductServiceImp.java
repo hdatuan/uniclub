@@ -4,6 +4,7 @@ import com.hdatuan.uniclub.entity.Color;
 import com.hdatuan.uniclub.entity.Product;
 import com.hdatuan.uniclub.entity.Size;
 import com.hdatuan.uniclub.entity.Variant;
+import com.hdatuan.uniclub.exceptions.InsertUpdateException;
 import com.hdatuan.uniclub.repository.ProductRepository;
 import com.hdatuan.uniclub.repository.VariantRepository;
 import com.hdatuan.uniclub.request.InsertProductRequest;
@@ -51,7 +52,7 @@ public class ProductServiceImp implements ProductService {
             variantRepository.save(variant);
         } catch (Exception e){
             System.out.println("Error : " + e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            throw new InsertUpdateException(e.getMessage());
         }
     }
 

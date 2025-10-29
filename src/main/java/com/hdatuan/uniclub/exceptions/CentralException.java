@@ -17,4 +17,14 @@ public class CentralException {
 
         return ResponseEntity.ok(response);
     }
+
+    @ExceptionHandler(exception = {InsertUpdateException.class})
+    public ResponseEntity<?> handleInsertExcepion(InsertUpdateException e){
+
+        BaseResponse response = new BaseResponse();
+        response.setCode(400);
+        response.setMessage(e.getMessage());
+
+        return ResponseEntity.ok(response);
+    }
 }
