@@ -49,6 +49,8 @@ public class ProductServiceImp implements ProductService {
             size.setId(request.getIdSize());
             variant.setSize(size);
 
+            variant.setImages(request.getFile().getOriginalFilename());
+
             variantRepository.save(variant);
         } catch (Exception e){
             System.out.println("Error : " + e.getMessage());
