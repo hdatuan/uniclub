@@ -1,9 +1,6 @@
 package com.hdatuan.uniclub.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +18,11 @@ public class Product {
     private String description;
     private String information;
     private double price;
-    private int idBrand;
+
+    @ManyToOne
+    @JoinColumn(name="id_brand")
+    private Brand idBrand;
+
     private LocalDateTime createdDate;
 
 

@@ -1,9 +1,6 @@
 package com.hdatuan.uniclub.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +11,19 @@ public class Variant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sku;
-    private int idProduct;
-    private int idColor;
-    private int idSize;
+
+    @ManyToOne
+    @JoinColumn(name="id_product")
+    private Product idProduct;
+
+    @ManyToOne
+    @JoinColumn(name="id_color")
+    private Color idColor;
+
+    @ManyToOne
+    @JoinColumn(name="id_size")
+    private Size idSize;
+
     private String images;
     private int quantity;
 
