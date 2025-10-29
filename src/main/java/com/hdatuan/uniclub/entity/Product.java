@@ -21,9 +21,9 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="id_brand")
-    private Brand idBrand;
+    private Brand brand;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime createDate;
 
 
 }

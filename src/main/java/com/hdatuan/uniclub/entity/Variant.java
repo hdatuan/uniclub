@@ -14,15 +14,15 @@ public class Variant {
 
     @ManyToOne
     @JoinColumn(name="id_product")
-    private Product idProduct;
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name="id_color")
-    private Color idColor;
+    private Color color;
 
     @ManyToOne
     @JoinColumn(name="id_size")
-    private Size idSize;
+    private Size size;
 
     private String images;
     private int quantity;

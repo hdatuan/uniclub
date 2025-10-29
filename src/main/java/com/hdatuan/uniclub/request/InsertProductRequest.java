@@ -8,11 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 public class InsertProductRequest {
-    MultipartFile file;
-    String name;
-    String description;
-    double price;
-    int idSize;
-    int idColor;
-    int quantity;
+    private MultipartFile file;
+    private String name;
+    private String description;
+    private double price;
+    private int idSize;
+    private int idColor;
+    private int quantity;
 }
