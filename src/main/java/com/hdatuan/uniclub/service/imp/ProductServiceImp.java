@@ -1,10 +1,12 @@
 package com.hdatuan.uniclub.service.imp;
 
+import com.hdatuan.uniclub.dto.ProductDTO;
 import com.hdatuan.uniclub.entity.Color;
 import com.hdatuan.uniclub.entity.Product;
 import com.hdatuan.uniclub.entity.Size;
 import com.hdatuan.uniclub.entity.Variant;
 import com.hdatuan.uniclub.exceptions.InsertUpdateException;
+import com.hdatuan.uniclub.mapper.ProductMapper;
 import com.hdatuan.uniclub.repository.ProductRepository;
 import com.hdatuan.uniclub.repository.VariantRepository;
 import com.hdatuan.uniclub.request.InsertProductRequest;
@@ -13,6 +15,8 @@ import com.hdatuan.uniclub.service.ProductService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -58,4 +62,9 @@ public class ProductServiceImp implements ProductService {
         }
     }
 
+
+    @Override
+    public List<ProductDTO> getAllProduct(){
+        return productRepository.findAll().stream().map(ProductMapper::toProductDTO).toList();
+    }
 }

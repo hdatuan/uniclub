@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name="product")
 @Getter
@@ -25,5 +26,7 @@ public class Product {
 
     private LocalDateTime createDate;
 
+    @OneToMany(mappedBy = "product")
+    private Set<Variant> variants;
 
 }

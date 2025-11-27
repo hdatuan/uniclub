@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests( request -> {
                     request.requestMatchers("/auth/*", "/files/*").permitAll();
                     request.requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN");
+                    request.requestMatchers(HttpMethod.GET, "/product").permitAll();
                     request.anyRequest().authenticated();
                 })
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
